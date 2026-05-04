@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en" class="dark"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sign in — My Vault</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head><body>
+<div class="auth-wrap">
+  <div class="auth-canvas"></div>
+  <canvas class="auth-rain" style="position:absolute;inset:0;width:100%;height:100%;opacity:.18;font-family:ui-monospace;"></canvas>
+  <div class="auth-inner">
+    <div class="auth-title"><h1>My Pocket Vault</h1></div>
+    <div class="auth-card">
+      <div class="card-head">
+        <div>
+          <h2>Welcome back</h2>
+          <div class="desc">Sign in from your phone and pick up where you left off.</div>
+        </div>
+        <div class="tabs"><div class="tab active">Sign In</div><div class="tab">Sign Up</div></div>
+      </div>
+      <div class="card-body">
+        <div class="field"><label class="label">Email</label><input class="input auth-input" placeholder="you@example.com"></div>
+        <div class="field">
+          <div style="display:flex; align-items:center; justify-content:space-between;">
+            <label class="label">Password</label>
+            <a href="reset-password.html" style="font-size:0.75rem; color:hsl(var(--primary)); font-weight:500;">Forgot password?</a>
+          </div>
+          <div style="position:relative;">
+            <input class="input auth-input" style="padding-right:3rem;" type="password" placeholder="••••••••">
+            <button class="btn ghost icon" style="position:absolute; right:0.25rem; top:50%; transform:translateY(-50%); height:2.5rem; width:2.5rem;"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class=""><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button>
+          </div>
+        </div>
+        <button class="btn auth-input full" style="border-radius:var(--radius);">Sign In</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+// Subtle binary rain
+const c = document.querySelector('.auth-rain');
+if (c) {
+  const ctx = c.getContext('2d');
+  const resize = () => { c.width = c.clientWidth; c.height = c.clientHeight; };
+  resize(); window.addEventListener('resize', resize);
+  const cols = Math.floor(c.width / 16);
+  const drops = Array(cols).fill(0).map(() => Math.random() * -50);
+  setInterval(() => {
+    ctx.fillStyle = 'hsla(220,25%,8%,0.18)';
+    ctx.fillRect(0,0,c.width,c.height);
+    ctx.font = '14px ui-monospace';
+    for (let i = 0; i < drops.length; i++) {
+      const t = Math.random() > 0.5 ? '1' : '0';
+      ctx.fillStyle = 'hsla(220,70%,55%,0.85)';
+      ctx.fillText(t, i*16, drops[i]*16);
+      if (drops[i]*16 > c.height && Math.random() > 0.975) drops[i] = 0;
+      drops[i]++;
+    }
+  }, 80);
+}
+</script>
+</body></html>

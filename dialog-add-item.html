@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Add item — My Vault</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head><body style="background: hsl(var(--muted));">
+<div class="overlay" style="position:relative; min-height:100vh;">
+  
+<div class="dialog">
+  <div class="dialog-header"><h2>Add new item</h2><p>Use Smart Add to let AI categorize, or pick a category yourself.</p></div>
+  <div class="dialog-body">
+    <div class="tabs"><div class="tab active">✨ Smart Add</div><div class="tab">Manual</div></div>
+    <div>
+      <label class="label">What do you want to save?</label>
+      <textarea class="textarea" placeholder="Paste anything: a password, a ticket, a note, a link…">My new wifi password is qwerty123, network Home_5G</textarea>
+    </div>
+    <div class="card" style="background:hsl(var(--primary) / 0.05); border-color:hsl(var(--primary) / 0.3);">
+      <div class="card-body" style="padding:0.875rem 1rem; display:flex; align-items:center; gap:0.75rem;">
+        <div style="width:32px; height:32px; border-radius:8px; background:hsl(var(--category-password) / 0.15); color:hsl(var(--category-password)); display:grid; place-items:center;">🔐</div>
+        <div class="grow">
+          <div style="font-weight:600; font-size:0.9rem;">Detected: Password</div>
+          <div class="muted" style="font-size:0.8rem;">Wifi — Home_5G</div>
+        </div>
+        <button class="btn btn-ghost" style="height:32px; padding:0 0.5rem;">Change</button>
+      </div>
+    </div>
+    <div class="row"><button class="btn btn-outline" style="flex:1;">📎 Attach file</button><button class="btn btn-outline" style="flex:1;">🎤 Voice</button></div>
+  </div>
+  <div class="dialog-footer">
+    <button class="btn btn-ghost">Cancel</button>
+    <button class="btn btn-primary">Save to vault</button>
+  </div>
+</div>
+
+</div>
+</body></html>
